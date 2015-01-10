@@ -1,7 +1,7 @@
 scant.js
 ========
 
-A very minimalistic javascript framework. It simply provides some helpers for
+A very minimalistic javascript library. It simply provides some helpers for
 ajax, extends, inherits and event delegation.
 
 Scant's query selector will return back a normal javascript array with `forEach`
