@@ -35,18 +35,6 @@ var Scant = (function(){
         };
     }
 
-    scant.prototype.hide = function(){
-        this.forEach(function(elm){
-            elm.style.display = 'none';
-        });
-    };
-
-    scant.prototype.show = function(){
-        this.forEach(function(elm){
-            elm.style.display = '';
-        });
-    };
-
     scant.prototype.find = function(selector){
         var elements = [];
         this.forEach(function(elm){
