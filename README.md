@@ -2,11 +2,12 @@ scant.js
 ========
 
 A very minimalistic javascript library. It simply provides some helpers for
-ajax, extends, inherits and event delegation.
+ajax, form serialization, extend, inherits and event delegation.
 
 Scant's query selector will return back a normal javascript array with `forEach`
-implemented if it does not exist and `find` (used to query for children of all
-wrapped elements in the array);
+implemented if it does not exist, `find` (used to query for children of all
+wrapped elements in the array) and `serialize` (used to serialize form elements
+or data attributes);
 
 ## Install
 ```html
