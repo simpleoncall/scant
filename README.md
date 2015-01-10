@@ -10,7 +10,7 @@ wrapped elements in the array);
 
 ## Install
 ```html
-<script type="text/javascript" src="//raw.githubusercontent.com/simpleoncall/scant/v0.1.0/scant.min.js"></script>
+<script type="text/javascript" src="/js/scant.min.js"></script>
 ```
 
 ## Usage
