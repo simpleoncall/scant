@@ -10,11 +10,11 @@ var Scant = (function(){
         });
     };
 
-    var extends = function(target, source) {
+    var extend = function(target, source) {
         var a = Object.create(target);
-        Object.keys(source).map(function (prop) {
-            prop in a && (a[prop] = source[prop]);
-        });
+        for(var prop in source){
+            a[prop] = source[prop];
+        }
         return a;
     };
 
@@ -52,7 +52,7 @@ var Scant = (function(){
         return new scant(selector);
     };
 
-    $.extends = extends;
+    $.extend = extend;
     $.inherits = inherits;
 
     var defaultAjaxOptions = {
@@ -67,7 +67,7 @@ var Scant = (function(){
         responseType: '',
     };
     $.ajax = function(options){
-        options = extends(defaultAjaxOptions, options);
+        options = extend(defaultAjaxOptions, options);
         var req = new XMLHttpRequest();
         req.responseType = options.responseType;
         req.open(options.method, options.url, true);
