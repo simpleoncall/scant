@@ -44,6 +44,69 @@ var Scant = (function(){
         return new scant(elements);
     };
 
+    scant.prototype.serialize = function(elm){
+        var results = {};
+        if(elm === undefined){
+            this.forEach(function(elm){
+                results = extend(results, this.serialize(elm));
+            }.bind(this));
+        } else if(elm.nodeName === 'FORM'){
+            this.forEach.call(elm.elements, function(elm){
+                if(elm.nodeName === 'INPUT'){
+                    switch(elm.type){
+                    case 'text':
+                    case 'hidden':
+                    case 'button':
+                    case 'reset':
+                    case 'submit':
+                    case 'password':
+                        results[elm.name] = elm.value;
+                        break;
+                    case 'checkbox':
+                    case 'radio':
+                        if(elm.checked){
+                            if(Array.isArray(results[elm.name])){
+                                results[elm.name].push(elm.value);
+                            } else if(elm.name in results){
+                                results[elm.name] = [results[elm.name], elm.value];
+                            } else {
+                                results[elm.name] = elm.value;
+                            }
+                        }
+                        break;
+                    }
+                } else if(elm.nodeName === 'TEXTAREA'){
+                    results[elm.name] = elm.value;
+                } else if(elm.nodeName === 'BUTTON'){
+                    results[elm.name] = elm.value;
+                } else if(elm.nodeName === 'SELECT'){
+                    switch(elm.type){
+                    case 'select-one':
+                        results[elm.name] = elm.value;
+                        break;
+                    case 'select-multiple':
+                        for(var i = 0; i < elm.options.length; ++i){
+                            if(elm.options[i].selected){
+                                if(Array.isArray(results[elm.name])){
+                                    results[elm.name].push(elm.options[i].value);
+                                } else if(elm.name in results){
+                                    results[elm.name] = [results[elm.name], elm.options[i].value];
+                                } else {
+                                    results[elm.name] = elm.options[i].value;
+                                }
+                            }
+                        }
+                        break;
+                    }
+                }
+            }.bind(this));
+        } else {
+            results = extend(results, elm.dataset);
+        }
+
+        return results;
+    };
+
     var $ = function(selector){
         if(typeof selector === 'string'){
             var elements = document.querySelectorAll(selector);
