@@ -1,0 +1,28 @@
+{
+  "name": "scant",
+  "version": "0.1.0",
+  "description": "Mini JavaScript library",
+  "main": "src/scant.js",
+  "scripts": {
+    "build": "./node_modules/.bin/uglifyjs ./src/scant.js --source-map ./scant.min.js.map -o scant.min.js --screw-ie8 -m -c --stats --lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/simpleoncall/scant"
+  },
+  "keywords": [
+    "mini",
+    "js",
+    "library",
+    "browser"
+  ],
+  "author": "Brett Langdon <brett@blangdon.com> (http://brett.is)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/simpleoncall/scant/issues"
+  },
+  "homepage": "https://github.com/simpleoncall/scant",
+  "devDependencies": {
+    "uglify-js": "^2.4.16"
+  }
+}
