@@ -118,8 +118,9 @@ var Scant = (function(){
         return new scant(selector);
     };
 
-    $.extend = extend;
-    $.inherits = inherits;
+    $.util = {};
+    $.util.extend = extend;
+    $.util.inherits = inherits;
     $.fn = scant.prototype;
 
     var defaultAjaxOptions = {
