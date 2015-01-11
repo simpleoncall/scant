@@ -19,6 +19,9 @@ var Scant = (function(){
     };
 
     var scant = function(dom, selector){
+        if(dom instanceof Node || dom instanceof HTMLElement){
+            dom = [dom];
+        }
         this.selector = selector || '';
         this.length = dom ? dom.length : 0;
         for(var i = 0; i < this.length; ++i){
