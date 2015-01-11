@@ -1,10 +1,10 @@
 {
   "name": "scant",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "description": "Mini JavaScript library",
   "main": "src/scant.js",
   "scripts": {
-      "build": "./node_modules/.bin/uglifyjs ./src/scant.js --source-map-include-sources --source-map ./scant.min.js.map -o scant.min.js --screw-ie8 -m -c --stats --lint --preamble '// scant.js v0.3.2\r\n// https://github.com/simpleoncall/scant\r\n// (c) 2015 Brett Langdon <brett@blangdon.com> (http://brett.is)\r\n// Licensed under MIT, do what you want'"
+      "build": "./node_modules/.bin/uglifyjs ./src/scant.js --source-map-include-sources --source-map ./scant.min.js.map -o scant.min.js --screw-ie8 -m -c --stats --lint --preamble '// scant.js v0.4.0\r\n// https://github.com/simpleoncall/scant\r\n// (c) 2015 Brett Langdon <brett@blangdon.com> (http://brett.is)\r\n// Licensed under MIT, do what you want'"
   },
   "repository": {
     "type": "git",
