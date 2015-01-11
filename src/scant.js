@@ -124,13 +124,12 @@ var Scant = (function(){
         headers: {},
         data: null,
         dataType: 'application/x-www-form-urlencoded; charset=UTF-8',
-        success: null,
-        error: null,
         beforeSend: null,
         responseType: '',
     };
-    $.ajax = function(options){
+    $.ajax = function(options, callback){
         options = extend(defaultAjaxOptions, options);
+        callback = typeof callback === 'function' ? callback : function(){};
         var req = new XMLHttpRequest();
         req.responseType = options.responseType;
         req.open(options.method, options.url, true);
@@ -139,19 +138,13 @@ var Scant = (function(){
         }
         req.onload = function(){
             if(req.status >= 200 && req.status < 400){
-                if(typeof options.success === 'function'){
-                    options.success(null, req);
-                }
+                callback(null, req);
             } else {
-                if(typeof options.error === 'function'){
-                    options.error(true, req);
-                }
+                callback(true, req);
             }
         };
         req.onerror = function(){
-            if(typeof options.error === 'function'){
-                options.error(true, req);
-            }
+            callback(true, req);
         };
         if(typeof options.beforeSend === 'function'){
             options.beforeSend(req);
