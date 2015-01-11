@@ -120,6 +120,7 @@ var Scant = (function(){
 
     $.extend = extend;
     $.inherits = inherits;
+    $.fn = scant.prototype;
 
     var defaultAjaxOptions = {
         url: null,
