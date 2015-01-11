@@ -47,6 +47,20 @@ var Scant = (function(){
         return new scant(elements);
     };
 
+    scant.prototype.on = function(eventName, selector, handler){
+        if(typeof selector === 'function'){
+            handler = selector;
+            selector = null;
+        }
+        this.forEach(function(elm){
+            elm.addEventListener(eventName, function(event){
+                if(selector === null || event.target.matches(selector)){
+                    return handler(event);
+                }
+            });
+        }.bind(this));
+    };
+
     scant.prototype.serialize = function(elm){
         var results = {};
         if(elm === undefined){
