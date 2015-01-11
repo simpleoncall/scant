@@ -171,7 +171,7 @@ var Scant = (function(){
     };
 
     $.ready = function(handler){
-        $.on('DOMContentLoaded', handler);
+        document.addEventListener('DOMContentLoaded', handler);
     };
 
     return $;
