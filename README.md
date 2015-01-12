@@ -9,6 +9,29 @@ implemented if it does not exist, `find` (used to query for children of all
 wrapped elements in the array) and `serialize` (used to serialize form elements
 or data attributes);
 
+### scant _/skant/_
+#### adjective
+*adjective:* scant
+
+1. barely sufficient or adequate.
+ 
+ "companies with scant regard for the safety of future generations"
+ 
+ *synonyms:*	little, little or no, minimal, hardly (any), limited, negligible, barely sufficient, meager
+ 
+ *antonyms:*	abundant, ample, sufficient barely amounting to a specified number or quantity.
+
+#### verb
+*verb:* scant;
+*3rd person present:* scants;
+*past tense:* scanted;
+*past participle:* scanted;
+*gerund or present participle:* scanting
+
+1. provide grudgingly or in insufficient amounts.
+
+ "he does not scant his attention to the later writings"
+
 ## Install
 ```html
 <script type="text/javascript" src="/js/scant.min.js"></script>
