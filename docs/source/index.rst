@@ -35,8 +35,45 @@ scant */skant/*
 Download
 ========
 
+`Github Page <https://github.com/simpleoncall/scant>`_
+
+* Latest: :download:`scant-latest.min.js <./_static/download/scant-latest.min.js>` :download:`scant-latest.min.js.map <./_static/download/scant-latest.min.js.map>`
+* v0.5.0: :download:`scant-v0.5.0.min.js <./_static/download/scant-v0.5.0.min.js>` :download:`scant-v0.5.0.min.js.map <./_static/download/scant-v0.5.0.min.js.map>`
+
+
 Usage
 =====
+
+.. code-block:: html
+
+    <script type="text/javascript" src="//path/to/scant.min.js"></script>
+    <script type="text/javascript">
+      // window.Scant === window.$
+      // window.$ is only made available is $ is not already registered
+
+      $.ready(function(){
+        var $elm = $('.selector');
+        $elm.on('click', '.child', function(evt){
+          evt.stopPropagation();
+          evt.preventDefault();
+
+          var data = $('form').serialize();
+          $.ajax({
+            url: '/end-point',
+            data: JSON.stringify(data),
+            dataType: 'application/json',
+            responseType: 'json',
+          }, function(err, request){
+            if(err || ~request.response){
+              alert('oh no, something went wrong');
+            } else {
+              alert('go a good response back');
+            }
+          });
+        });
+      });
+    </script>
+
 
 API Documentation
 =================
@@ -117,14 +154,66 @@ $ Object
         :js:data:`request` will be the :js:class:`XMLHttpRequest` object used for the request.
     :returns: null
 
-.. js:function:: $.on(eventName, selector, handler)
+.. js:function:: $.on(eventName, [selector], handler)
+
+    Function for event delegation. This method will add `handler` as an event handler
+    on `body`, optionally filtering based on the `selector` provided.
+
+    :param string eventName: The event to bind (e.g. 'click', 'submit', etc)
+    :param string selector: Optional parameter, a css selector used to filter events
+    :param function handler: The handler to bind for the event
+    :returns: null
 
 .. js:function:: $.ready(handler)
+
+    Function used to add a handler when the page has finished loaded ('DOMContentLoaded').
+
+    :param function handler: The handler to invoke when 'DOMContentLoaded'
+    :returns: null
+
 
 scant Class
 ~~~~~~~~~~~
 
-.. js:class:: scant(dom, selector)
+.. js:class:: scant([dom], [selector])
+
+    The `scant` class inherits from `Array` and properties of an `Array` are available
+    (although `forEach` is shimmed in if it is not supported by the browser).
+
+    :param Object dom:
+        `dom` is either an `Array` of elements or the result of calling
+        `document.querySelectorAll` with a `selector`
+    :param string selector: The selector used to fetch `dom`.
+
+.. js:function:: scant.find(selector)
+
+    Method used to find all children matching `selector` beloning to the elements
+    stored in this instance of scant.
+
+    :param string selector: A css selector to use to match elements.
+    :returns: :js:class:`scant`
+
+.. js:function:: scant.on(eventName, [selector], handler)
+
+    This method is the same as :js:func:`$.on` except the handler is bound to every node
+    stored in this instance of scant as opposed to binding to `body`.
+
+    :param string eventName: The event to bind to (e.g. 'click', 'submit', etc)
+    :param string selector: A css selector used to filter the events by
+    :param function handler: The handler to call for each event.
+    :returns: null
+
+.. js:function:: scant.serialize([elm])
+
+    Method used to serialize the data for elements stored in this instance of scant.
+    Most useful for fetching the data from `form` elements. This method gets the name/value
+    pairs for all `form` elements (creating an array when the same name is present multiple times)
+    as well as appending element data attributes.
+
+    :param Object elm:
+        This parameter is mostly used internally to this function when making recursive
+        calls for serializing the data, but can be a single dom element to serialize.
+    :returns: Object
 
 
 Indices and tables
