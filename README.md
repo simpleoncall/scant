@@ -1,6 +1,8 @@
 scant.js
 ========
 
+[![Docs Status](https://readthedocs.org/projects/scant/badge/?version=latest)](https://scant.readthedocs.org)
+
 A very minimalistic javascript library. It simply provides some helpers for
 ajax, form serialization, extend, inherits and event delegation.
 
