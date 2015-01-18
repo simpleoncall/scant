@@ -150,8 +150,8 @@ var Scant = (function(){
         options = extend(defaultAjaxOptions, options);
         callback = typeof callback === 'function' ? callback : function(){};
         var req = new XMLHttpRequest();
-        req.responseType = options.responseType;
         req.open(options.method, options.url, true);
+        req.responseType = options.responseType;
         for(var key in options.headers){
             req.setRequestHeader(key, options.headers[key]);
         }
